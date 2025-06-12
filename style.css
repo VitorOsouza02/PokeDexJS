@@ -1,0 +1,197 @@
+body {
+    font-family: "Pixelify Sans", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #ffcb05;
+    padding: 10px 0;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #2a75bb;
+}
+
+main {
+    padding: 20px;
+    flex: 1;
+}
+
+footer {
+    background-color: #2a75bb;
+    color: white;
+    padding: 10px;
+}
+
+/* Search Section */
+.search-section {
+    margin-bottom: 20px;
+}
+
+#pokemon-form,
+#filters-form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+input, select, button {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #2a75bb;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #1a4a7a;
+}
+
+/* Mobile Layout */
+@media (max-width: 600px) {
+    #pokemon-form,
+    #filters-form {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    
+    #pokemon-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop Layout */
+@media (min-width: 601px) {
+    #pokemon-gallery {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Pokemon Gallery */
+#pokemon-gallery {
+    display: grid;
+    gap: 60px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.card {
+    perspective: 1000px;
+    width: 160px;
+    height: 220px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    transform-origin: center;
+}
+
+.pokemon-image {
+    width: 140px;
+    height: auto;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+    cursor: pointer;
+    scale: 1.1;
+}
+
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-front {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    background-image: url('./images/card-back.jpg');
+    background-size: cover;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    background-image: url('./images/back-modal.jpg');
+    background-size: cover;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.modal-close {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.modal-body {
+    font-size: 20px;
+}
+.modal-info{
+    font-size: 20px;
+    text-align: left;
+    border: 11px double #817f8d;
+    background: #aba8c2;
+    padding: 10px;
+}
+
+.modal-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
